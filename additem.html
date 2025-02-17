@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Item
+{% endblock %}
+
+{% block main %}
+    <H6 style="font-weight: normal">Add Item</H6>
+    <br>
+    <br>
+    <form action="/additem" method="post">
+        <div class="row">
+            <div class="col">
+                <select class="form-select" name="category" aria-label="Default select example">
+                    {% for category in categories %}
+                        <option value="{{ category }}">{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="descripion" name="description" placeholder="Description" type="text" style="border-color: black">
+            </div>
+            <div class="col">
+                <select class="form-select" name="unit" aria-label="Default select example">
+                    <option selected>Unit</option>
+                    <option value="in">in</option>
+                    <option value="in^2">in^2</option>
+                    <option value="ft">ft</option>
+                    <option value="lf">lf</option>
+                    <option value="vf">vf</option>
+                    <option value="sf">sf</option>
+                    <option value="cf">cf</option>
+                    <option value="yd">yd</option>
+                    <option value="sy">sy</option>
+                    <option value="cy">cy</option>
+                    <option value="mi">mi</option>
+                    <option value="mi^2">mi^2</option>
+                    <option value="ac">ac</option>
+                    <option value="ac-ft">ac-ft</option>
+                </select>
+            </div>
+            <div class="col">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="price" name="price" placeholder="Unit Price" type="decimal" style="border-color: black">
+            </div>
+            <div class="col">
+                <select class="form-select" name="location" aria-label="Default select example">
+                    {% for location in locations %}
+                        <option value="{{ location }}">{{ location }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <button class="btn btn-secondary btn-sm" type="submit">ADD</button>
+    </form>
+{% endblock %}

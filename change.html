@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Item
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <div class="section">
+        <H6>Change Item Details</H6>
+        <br>
+        <br>
+            <table align="center" col span="1" style="width: 100%">
+                <thead><h6 style="font-weight: normal">Current Data</h6></thead>
+                    <form action="/change" method="post">
+                        <tbody>
+                            <tr align="center">
+                                <th scope="col"><h6>Category</h6></th>
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Location</h6></th>
+                            </tr>
+
+                            {% for row in mitem %}
+                                <tr>
+                                    <td>{{ row["category"] }}</td>
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["location"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+            </table>
+        </div>
+        <div class="section">
+            <table align="center" col span="1" style="width: 100%">
+                <thead><h6 style="font-weight: normal">New Data</h6></thead>
+                    <form action="/change" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-select" name="category" aria-label="Default select example">
+                                    {% for category in categories %}
+                                        <option value="{{ category }}">{{ category }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="descripion" name="description" placeholder="Description" type="text" style="border-color: black">
+                            </div>
+                            <div class="col">
+                                <select class="form-select" name="unit" aria-label="Default select example">
+                                    <option selected>Unit</option>
+                                    <option value="in">in</option>
+                                    <option value="in^2">in^2</option>
+                                    <option value="ft">ft</option>
+                                    <option value="lf">lf</option>
+                                    <option value="vf">vf</option>
+                                    <option value="sf">sf</option>
+                                    <option value="cf">cf</option>
+                                    <option value="yd">yd</option>
+                                    <option value="sy">sy</option>
+                                    <option value="cy">cy</option>
+                                    <option value="mi">mi</option>
+                                    <option value="mi^2">mi^2</option>
+                                    <option value="ac">ac</option>
+                                    <option value="ac-ft">ac-ft</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="price" name="price" placeholder="Unit Price" type="decimal" style="border-color: black">
+                            </div>
+                            <div class="col">
+                                <select class="form-select" name="location" aria-label="Default select example">
+                                    {% for location in locations %}
+                                        <option value="{{ location }}">{{ location }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <button class="btn btn-secondary btn-sm" type="submit">CHANGE</button>
+                    </form>
+            </table>
+        </div>
+    </div>
+{% endblock %}

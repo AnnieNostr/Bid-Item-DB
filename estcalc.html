@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Estimate Calculation
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <form action="/estcalc" method="post">
+                <table align="center" col span="1" style="width: 100%">
+                    <thead><h6>Cost Estimate</h6></thead>
+                    <thead><h6>Calculations</h6></thead>
+                    <br>
+                        <tbody>
+                            <th>Estimate Name</th>
+                            <td>{{ est_name }}</td>
+
+                            <tr align="center">
+                                <th scope="col"><h6>ID</h6></th>
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Quantity</h6></th>
+                            </tr>
+
+                            {% for row in est_list %}
+                                <tr align="center">
+                                    <td>{{ row["id"] }}</td>
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["quantity"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+                <br>
+                <br>
+                    <button class="btn btn-secondary btn-sm" type="submit">CALCULATE</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+
+

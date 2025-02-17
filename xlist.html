@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Xlist
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table class="table table-striped" align="center" col span="1" style="width: 100%">
+                    <thead><h6 style="font-weight: normal">Results</h6></thead>
+                    <br>
+                    <form action="/xlist" method="post">
+                        <p>
+                            <button class="btn btn-secondary btn-sm" type="submit" name="option" value="estimate" style="background-color: gray">ADD TO ESTIMATE {{EstimatePressed}}</button>
+                            <button class="btn btn-secondary btn-sm" type="submit" name="option" value="remove" style="background-color: gray">REMOVE {{RemovePressed}}</button>
+                            <button class="btn btn-secondary btn-sm" type="submit" name="option" value="change" style="background-color: gray">CHANGE {{ChangePressed}}</button>
+                            <button class="btn btn-secondary btn-sm" type="submit" name="option" value="update" style="background-color: gray">UPDATE {{UpdatePressed}}</button>
+                        </p>
+
+                        <tbody>
+                            <tr align="center">
+                                <th scope="col"><h6>Category</h6></th>
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                
+                            </tr>
+
+                            {% for row in results %}
+                                <tr align="center">
+                                    <td>{{ row["category"] }}</td>
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["location"] }}</td>
+                                    <td><input type="checkbox" class="btn-check" autocomplete="off" id="btn-check-{{ row["id"] }}" name="selection" value="{{ row["id"] }}"></td>
+                                    <td><label class="btn btn-primary" for="btn-check-{{ row["id"] }}">Select</label></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+<script>
+    $(document).ready(function() {
+        $('input[type="checkbox"]').click(function() {
+            if($(this).prop("checked") == true) {
+                $(this).closest('tr').css('background-color', '#f0f0f0');
+            } else {
+                $(this).closest('tr').css('background-color', '#ffffff');
+            }
+        });
+    });
+</script>

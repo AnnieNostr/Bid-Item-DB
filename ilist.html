@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Item List From Search Bar
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table class="table table-striped" align="center" col span="1" style="width: 100%">
+                    <thead><h6 style="font-weight: normal">Results</h6></thead>
+                    <br>
+                    <form action="/ilist" method="post">
+                        <tbody>
+                            <tr align="center">
+                                <th scope="col"><h6>Category</h6></th>
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Location</h6></th>
+                            </tr>
+
+                            {% for row in results %}
+                                <tr align="center">
+                                    <td>{{ row["category"] }}</td>
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["location"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+<script>
+    const choice = document.querySelector(".btn btn-primary");
+    function choice(option) {
+        buttonchoice = 'choice';
+    }
+</script>
+

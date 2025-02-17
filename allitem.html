@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Items
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table class="table table-striped" align="left" col span="1" style="width: 100%">
+                    <thead><h6>All Items</h6></thead>
+                    <br>
+                    <form action="/allitem" method="post">
+                        <tbody>
+                            <tr align="center">
+                                <th scope="col"><p>Category</p></th>
+                                <th scope="col"><p>Description</p></th>
+                                <th scope="col"><p>Unit</p></th>
+                                <th scope="col"><p>Unit Price</p></th>
+                                <th scope="col"><p>Location</p></th>
+                            </tr>
+
+                            {% for row in items %}
+                                <tr align="center">
+                                    <td>{{ row["category"] }}</td>
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["location"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+{% endblock %}

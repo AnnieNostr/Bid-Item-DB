@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Location
+{% endblock %}
+
+{% block main %}
+    <H6 style="font-weight: normal">Add Location</H6>
+    <br>
+    <br>
+    <form action="/addloc" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Location</span>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="location" name="location" placeholder="Location" type="text" style="border-color: black">
+        </div>
+        <button class="btn btn-secondary btn-sm" type="submit">ADD</button>
+    </form>
+{% endblock %}

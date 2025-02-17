@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Build Estimate
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table align="center" col span="1" style="width: 100%">
+                    <thead><h6>Cost Estimate</h6></thead>
+                    <thead><h6>Item List</h6></thead>
+                    <br>
+                        <tbody>
+                            <th>Estimate Name</th>
+                            <td>{{ est_name }}</td>
+
+                            <tr align="center">
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Quantity</h6></th>
+                            </tr>
+
+                            {% for row in est_list %}
+                                <tr align="center">
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"]  }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["quantity"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+                <br>
+                <br>
+                <form action="/estcheck" method="post">
+                    <button class="btn btn-secondary btn-sm" type="submit" name="option" value="additem">ADD ITEM {{AdditemPressed}}</button>
+                    <button class="btn btn-secondary btn-sm" type="submit" name="option" value="addqty">ADD QUANTITIES {{AddqtyPressed}}</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+
+

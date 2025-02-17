@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Item
+{% endblock %}
+
+{% block main %}
+    <H1>Confirm Remove Item</H1>
+    <br>
+    <br>
+    <div class="mb-3">
+        <div class="section">
+            <table align="center" col span="1" style="width: 100%">
+                <thead><h6>Item Details</h6></thead>
+                <br>
+                <tbody>
+                    <tr align="center">
+                        <th scope="col"><h6>Category</h6></th>
+                        <th scope="col"><h6>Description</h6></th>
+                        <th scope="col"><h6>Unit</h6></th>
+                        <th scope="col"><h6>Unit Price</h6></th>
+                        <th scope="col"><h6>Location</h6></th>
+                    </tr>
+                    {% for row in select %}
+                        <tr align="center">
+                            <td>{{ row["category"] }}</td>
+                            <td>{{ row["description"] }}</td>
+                            <td>{{ row["unit"] }}</td>
+                            <td>{{ row["price"] }}</td>
+                            <td>{{ row["location"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form action="/remove" method="post">
+        <button class="btn btn-secondary btn-sm" type="submit">CONFIRM</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Estimate Calculation
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <form action="/estqty2" method="post">
+                <table align="center" col span="1" style="width: 100%">
+                    <thead><h6>Cost Estimate</h6></thead>
+                    <thead><h6>Calculations</h6></thead>
+                    <br>
+                        <tbody>
+                            <th>Estimate Name</th>
+                            <td>{{ est_name }}</td>
+
+                            <tr align="center">
+                                <th scope="col"><h6>ID</h6></th>
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Current Quantity</h6></th>
+                                <th scope="col"><h6>New Quantity</h6></th>
+                            </tr>
+
+                            <tr align="center">
+                                <td>{{ get_id }}</td>
+                                <td>{{ get_desc }}</td>
+                                <td>{{ get_unit }}</td>
+                                <td>{{ get_price }}</td>
+                                <td>{{ get_qty }}</td>
+                                <td><input autocomplete="off" autofocus class="form-control mx-auto w-auto" type="decimal" id="quantity" name="quantity" placeholder="Quantity"</td>
+                            </tr>
+                            
+                        </tbody>
+                </table>
+                <br>
+                <br>
+                    <button class="btn btn-secondary btn-sm" type="submit">SAVE</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+
+

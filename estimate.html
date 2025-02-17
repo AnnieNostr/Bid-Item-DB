@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Estimate
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table class="table table-striped" align="center" col span="1" style="width: 100%">
+                    <thead><h6>Cost Estimate</h6></thead>
+                    <br>
+                        <tbody>
+                            <th>Estimate Name</th>
+                            <td>{{ est_name }}</td>
+                            <th>Created</th>
+                            <td>{{ est_created }}</td>
+                            <th>Updated</th>
+                            <td>{{ est_updated }}</td>
+                            <tr align="center">
+                                <th scope="col"><h6>Description</h6></th>
+                                <th scope="col"><h6>Unit</h6></th>
+                                <th scope="col"><h6>Unit Price</h6></th>
+                                <th scope="col"><h6>Quantity</h6></th>
+                                <th scope="col"><h6>Cost</h6></th>
+                            </tr>
+
+                            {% for row in est_list %}
+                                <tr align="center">
+                                    <td>{{ row["description"] }}</td>
+                                    <td>{{ row["unit"] }}</td>
+                                    <td>{{ row["price"] | usd }}</td>
+                                    <td>{{ row["quantity"] | decimal }}</td>
+                                    <td>{{ row["cost"] | usd }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <th>Total:</th>
+                        <td>{{ est_total | usd }}</td>
+                </table>
+               
+                <form action="/estimate" method="post">
+                    <button class="btn btn-secondary btn-sm" type="submit" name="option" value="removeest">REMOVE ESTIMATE {{RemoveitemPressed}}</button>
+                    <button class="btn btn-secondary btn-sm" type="submit" name="option" value="updateest">CHANGE ESTIMATE {{ChangequantityPressed}}</button>
+                    <button class="btn btn-secondary btn-sm" type="submit" name="option" value="pdf">PDF {{PdfPressed}}</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+
+

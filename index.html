@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section" align="left">
+                <div class="container-fluid">
+                    <p>{{ today }}</p>
+                    <BLOCKQUOTE>
+                        <p style="width: 100%">This construction cost estimate application provides a method of storing and maintaining unit costs as well as creating cost estimates with the data.
+                            All parameters are created by the user and can be customized to meet individual needs.
+                        </p>
+                    </BLOCKQUOTE>
+                    <br>
+                    <p style="width: 100%">Instuctions</p>
+                    <ol style="width: 100%">
+                        <li>Use Add Category and Add Location buttons to enter options to be used when entering new items.</li>
+                        <li>Use Add Item to enter new items individually.</li>
+                        <li>When an item is found other options (Change, Update, Remove and Add) can be used.</li>
+                        <li>Change allows everything except the unit cost to be changed.</li>
+                        <li>Update allows only the price to be changed.</li>    
+                        <li>Remove deletes an item from the database.</li>    
+                        <li>Add To Estimate will add item to an estimate(new or existing).</li>
+                        <li>Use Search bar to view and item only.</li>
+                        <li>Upload file format must be CSV.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+{% endblock %}

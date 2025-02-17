@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Build Estimate
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table align="center" col span="1" style="width: 50%">
+                    <thead><h6>Build Estimate</h6></thead>
+                    <br>
+                    <form action="/estbuild" method="post">
+                        <label>Enter new estimate name</label>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Estimate Name</span>
+                            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" type="text" id="estname" name="estname" placeholder="Estimate Name" type="number">
+                        </div>
+                        <br>
+                        <button class="btn btn-secondary btn-sm" type="submit" name="additem" value="additem">CREATE</button>
+                    </form>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+<script>
+    const choice = document.querySelector(".btn btn-primary");
+    function choice(option) {
+        buttonchoice = 'choice';
+    }
+</script>
+

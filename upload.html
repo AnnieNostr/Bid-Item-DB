@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Items
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            <div class="section">
+                <table align="center" col span="1" style="width: 50%">
+                    <thead><h6>Upload Items</h6></thead>
+                    <br>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <div>
+                            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="file" name="file" placeholder="File" type="file">
+                            <br>
+                            <input type="submit" value="Upload">
+                        </div>
+                    </form>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+<script>
+    const choice = document.querySelector(".btn btn-primary");
+    function choice(option) {
+        buttonchoice = 'choice';
+    }
+</script>
+
